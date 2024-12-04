@@ -33,6 +33,7 @@ export default [
       'generators/*',
       'src/generated/*',
       '*.cjs',
+      '*eslint.config.js',
     ],
   },
   {

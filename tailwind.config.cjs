@@ -24,19 +24,19 @@ module.exports = {
 
         // PROJECT THEME
         // Primary
-        primary: '#0329E9',
-        'primary-300': '#0329E9',
-        'primary-700': '#011FB2',
+        primary: '#022A93',
+        'primary-300': '#2056E2',
+        'primary-700': '#00195A',
 
         // Secondary
         secondary: '#F9BA08',
         'secondary-300': '#FFDE80',
         'secondary-700': '#CE9801',
 
-        // Tetriary
-        tetriary: '#3D4863',
-        'tetriary-300': '#A3ACC2',
-        'tetriary-700': '#1C2A4C',
+        // Tertiary
+        tertiary: '#374458',
+        'tertiary-300': '#92ABCF',
+        'tertiary-700': '#1C2A4C',
 
         // GDSC THEME
         // GDSC Fessior Color
