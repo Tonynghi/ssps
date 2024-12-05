@@ -17,19 +17,19 @@ const Header = () => {
       </Link>
       <div className="flex flex-row relative gap-6">
         <Link
-          to="/courses"
+          to="/history"
           className="hover:text-[#022A93] duration-200 ease-in-out relative flex items-center justify-center"
         >
           Quản lý hệ thống
         </Link>
         <Link
-          to="/courses"
+          to="/history"
           className="hover:text-[#022A93] duration-200 ease-in-out relative flex items-center justify-center"
         >
           Thống kê
         </Link>
         <Link
-          to="/courses"
+          to="/history"
           className="hover:text-[#022A93] duration-200 ease-in-out relative flex items-center justify-center"
         >
           Lịch sử

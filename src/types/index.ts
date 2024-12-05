@@ -1,3 +1,9 @@
+export type User = {
+  name: string;
+  email: string;
+  sid: string;
+};
+
 export type Paper = {
   name: string;
   width: number;
@@ -24,4 +30,32 @@ export type PrintInfo = {
   rangeEnd: number;
   paper: Paper;
   printer: Printer;
+};
+
+export enum RequestStatus {
+  COMPLETED = 'COMPLETED',
+  PENDING = 'PENDING',
+  REFUSED = 'REFUSED',
+}
+
+export type PrintRequest = {
+  id: string;
+  name: string;
+  faces: number;
+  copies: number;
+  rangeStart: number;
+  rangeEnd: number;
+  paper: Paper;
+  startDate: number;
+  endDate: number;
+  printer: Printer;
+  status: RequestStatus;
+  creator: User;
+};
+
+export type Transaction = {
+  name: string;
+  price: number;
+  date: number;
+  status: RequestStatus;
 };

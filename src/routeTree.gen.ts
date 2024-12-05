@@ -12,7 +12,9 @@
 
 import { Route as rootRoute } from './features/~__root'
 import { Route as IndexImport } from './features/~index'
-import { Route as CoursesIndexImport } from './features/~courses/~index'
+import { Route as StatisticsIndexImport } from './features/~statistics/~index'
+import { Route as RequestIndexImport } from './features/~request/~index'
+import { Route as HistoryIndexImport } from './features/~history/~index'
 
 // Create/Update Routes
 
@@ -22,9 +24,21 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const CoursesIndexRoute = CoursesIndexImport.update({
-  id: '/courses/',
-  path: '/courses/',
+const StatisticsIndexRoute = StatisticsIndexImport.update({
+  id: '/statistics/',
+  path: '/statistics/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const RequestIndexRoute = RequestIndexImport.update({
+  id: '/request/',
+  path: '/request/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const HistoryIndexRoute = HistoryIndexImport.update({
+  id: '/history/',
+  path: '/history/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,11 +53,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/courses/': {
-      id: '/courses/'
-      path: '/courses'
-      fullPath: '/courses'
-      preLoaderRoute: typeof CoursesIndexImport
+    '/history/': {
+      id: '/history/'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/request/': {
+      id: '/request/'
+      path: '/request'
+      fullPath: '/request'
+      preLoaderRoute: typeof RequestIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/statistics/': {
+      id: '/statistics/'
+      path: '/statistics'
+      fullPath: '/statistics'
+      preLoaderRoute: typeof StatisticsIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +81,47 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/courses': typeof CoursesIndexRoute
+  '/history': typeof HistoryIndexRoute
+  '/request': typeof RequestIndexRoute
+  '/statistics': typeof StatisticsIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/courses': typeof CoursesIndexRoute
+  '/history': typeof HistoryIndexRoute
+  '/request': typeof RequestIndexRoute
+  '/statistics': typeof StatisticsIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/courses/': typeof CoursesIndexRoute
+  '/history/': typeof HistoryIndexRoute
+  '/request/': typeof RequestIndexRoute
+  '/statistics/': typeof StatisticsIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/courses'
+  fullPaths: '/' | '/history' | '/request' | '/statistics'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/courses'
-  id: '__root__' | '/' | '/courses/'
+  to: '/' | '/history' | '/request' | '/statistics'
+  id: '__root__' | '/' | '/history/' | '/request/' | '/statistics/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CoursesIndexRoute: typeof CoursesIndexRoute
+  HistoryIndexRoute: typeof HistoryIndexRoute
+  RequestIndexRoute: typeof RequestIndexRoute
+  StatisticsIndexRoute: typeof StatisticsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CoursesIndexRoute: CoursesIndexRoute,
+  HistoryIndexRoute: HistoryIndexRoute,
+  RequestIndexRoute: RequestIndexRoute,
+  StatisticsIndexRoute: StatisticsIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +135,22 @@ export const routeTree = rootRoute
       "filePath": "~__root.tsx",
       "children": [
         "/",
-        "/courses/"
+        "/history/",
+        "/request/",
+        "/statistics/"
       ]
     },
     "/": {
       "filePath": "~index.tsx"
     },
-    "/courses/": {
-      "filePath": "~courses/~index.tsx"
+    "/history/": {
+      "filePath": "~history/~index.tsx"
+    },
+    "/request/": {
+      "filePath": "~request/~index.tsx"
+    },
+    "/statistics/": {
+      "filePath": "~statistics/~index.tsx"
     }
   }
 }
