@@ -482,7 +482,7 @@ function LandingPage() {
                       <input
                         id="copy"
                         name="copy"
-                        type="numbers"
+                        type="number"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.copy}
@@ -554,7 +554,7 @@ function LandingPage() {
                                 disabled={formik.values.custom === 'default'}
                                 id="rangeStart"
                                 name="rangeStart"
-                                type="numbers"
+                                type="number"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.rangeStart}
@@ -570,7 +570,7 @@ function LandingPage() {
                               disabled={formik.values.custom === 'default'}
                               id="rangeEnd"
                               name="rangeEnd"
-                              type="numbers"
+                              type="number"
                               onChange={formik.handleChange}
                               onBlur={formik.handleBlur}
                               value={formik.values.rangeEnd}
@@ -885,12 +885,12 @@ function LandingPage() {
                   >
                     Gửi yêu cầu khác
                   </button>
-                  <button
-                    type="button"
+                  <Link
+                    to="/history"
                     className="relative mt-2 flex size-fit items-center justify-center rounded-lg bg-primary px-12 py-2 font-bold text-white duration-200 ease-in-out hover:bg-primary-700 self-end"
                   >
                     Xem chi tiết yêu cầu
-                  </button>
+                  </Link>
                 </div>
               </div>
             )}

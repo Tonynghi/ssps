@@ -59,3 +59,10 @@ export type Transaction = {
   date: number;
   status: RequestStatus;
 };
+
+export type ChartData = {
+  title: string;
+  dataValues: Array<number>;
+  dataLabels: Array<string>;
+  dataColors: Array<string>;
+};

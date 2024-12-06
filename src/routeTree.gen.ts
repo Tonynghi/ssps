@@ -14,6 +14,7 @@ import { Route as rootRoute } from './features/~__root'
 import { Route as IndexImport } from './features/~index'
 import { Route as StatisticsIndexImport } from './features/~statistics/~index'
 import { Route as RequestIndexImport } from './features/~request/~index'
+import { Route as ManagementIndexImport } from './features/~management/~index'
 import { Route as HistoryIndexImport } from './features/~history/~index'
 
 // Create/Update Routes
@@ -33,6 +34,12 @@ const StatisticsIndexRoute = StatisticsIndexImport.update({
 const RequestIndexRoute = RequestIndexImport.update({
   id: '/request/',
   path: '/request/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ManagementIndexRoute = ManagementIndexImport.update({
+  id: '/management/',
+  path: '/management/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -60,6 +67,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HistoryIndexImport
       parentRoute: typeof rootRoute
     }
+    '/management/': {
+      id: '/management/'
+      path: '/management'
+      fullPath: '/management'
+      preLoaderRoute: typeof ManagementIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/request/': {
       id: '/request/'
       path: '/request'
@@ -82,6 +96,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/history': typeof HistoryIndexRoute
+  '/management': typeof ManagementIndexRoute
   '/request': typeof RequestIndexRoute
   '/statistics': typeof StatisticsIndexRoute
 }
@@ -89,6 +104,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/history': typeof HistoryIndexRoute
+  '/management': typeof ManagementIndexRoute
   '/request': typeof RequestIndexRoute
   '/statistics': typeof StatisticsIndexRoute
 }
@@ -97,22 +113,30 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/history/': typeof HistoryIndexRoute
+  '/management/': typeof ManagementIndexRoute
   '/request/': typeof RequestIndexRoute
   '/statistics/': typeof StatisticsIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/history' | '/request' | '/statistics'
+  fullPaths: '/' | '/history' | '/management' | '/request' | '/statistics'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/history' | '/request' | '/statistics'
-  id: '__root__' | '/' | '/history/' | '/request/' | '/statistics/'
+  to: '/' | '/history' | '/management' | '/request' | '/statistics'
+  id:
+    | '__root__'
+    | '/'
+    | '/history/'
+    | '/management/'
+    | '/request/'
+    | '/statistics/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HistoryIndexRoute: typeof HistoryIndexRoute
+  ManagementIndexRoute: typeof ManagementIndexRoute
   RequestIndexRoute: typeof RequestIndexRoute
   StatisticsIndexRoute: typeof StatisticsIndexRoute
 }
@@ -120,6 +144,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HistoryIndexRoute: HistoryIndexRoute,
+  ManagementIndexRoute: ManagementIndexRoute,
   RequestIndexRoute: RequestIndexRoute,
   StatisticsIndexRoute: StatisticsIndexRoute,
 }
@@ -136,6 +161,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/history/",
+        "/management/",
         "/request/",
         "/statistics/"
       ]
@@ -145,6 +171,9 @@ export const routeTree = rootRoute
     },
     "/history/": {
       "filePath": "~history/~index.tsx"
+    },
+    "/management/": {
+      "filePath": "~management/~index.tsx"
     },
     "/request/": {
       "filePath": "~request/~index.tsx"

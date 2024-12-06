@@ -17,13 +17,13 @@ const Header = () => {
       </Link>
       <div className="flex flex-row relative gap-6">
         <Link
-          to="/history"
+          to="/management"
           className="hover:text-[#022A93] duration-200 ease-in-out relative flex items-center justify-center"
         >
           Quản lý hệ thống
         </Link>
         <Link
-          to="/history"
+          to="/statistics"
           className="hover:text-[#022A93] duration-200 ease-in-out relative flex items-center justify-center"
         >
           Thống kê
