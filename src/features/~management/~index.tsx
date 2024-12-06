@@ -32,7 +32,7 @@ const PrinterCard = ({
 }: PrinterCardProps) => {
   return (
     <Link
-      to="/"
+      to="/printer"
       className="w-[20rem] bg-white shadow-xl flex flex-row items-center justify-between h-[7.5rem] relative p-4"
     >
       <div className="flex flex-col h-full relative gap-2">

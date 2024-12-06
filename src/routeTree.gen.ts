@@ -14,8 +14,10 @@ import { Route as rootRoute } from './features/~__root'
 import { Route as IndexImport } from './features/~index'
 import { Route as StatisticsIndexImport } from './features/~statistics/~index'
 import { Route as RequestIndexImport } from './features/~request/~index'
+import { Route as PrinterIndexImport } from './features/~printer/~index'
 import { Route as ManagementIndexImport } from './features/~management/~index'
 import { Route as HistoryIndexImport } from './features/~history/~index'
+import { Route as AddPrinterIndexImport } from './features/~add-printer/~index'
 
 // Create/Update Routes
 
@@ -37,6 +39,12 @@ const RequestIndexRoute = RequestIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const PrinterIndexRoute = PrinterIndexImport.update({
+  id: '/printer/',
+  path: '/printer/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const ManagementIndexRoute = ManagementIndexImport.update({
   id: '/management/',
   path: '/management/',
@@ -46,6 +54,12 @@ const ManagementIndexRoute = ManagementIndexImport.update({
 const HistoryIndexRoute = HistoryIndexImport.update({
   id: '/history/',
   path: '/history/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AddPrinterIndexRoute = AddPrinterIndexImport.update({
+  id: '/add-printer/',
+  path: '/add-printer/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -60,6 +74,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/add-printer/': {
+      id: '/add-printer/'
+      path: '/add-printer'
+      fullPath: '/add-printer'
+      preLoaderRoute: typeof AddPrinterIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/history/': {
       id: '/history/'
       path: '/history'
@@ -72,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/management'
       fullPath: '/management'
       preLoaderRoute: typeof ManagementIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/printer/': {
+      id: '/printer/'
+      path: '/printer'
+      fullPath: '/printer'
+      preLoaderRoute: typeof PrinterIndexImport
       parentRoute: typeof rootRoute
     }
     '/request/': {
@@ -95,16 +123,20 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/add-printer': typeof AddPrinterIndexRoute
   '/history': typeof HistoryIndexRoute
   '/management': typeof ManagementIndexRoute
+  '/printer': typeof PrinterIndexRoute
   '/request': typeof RequestIndexRoute
   '/statistics': typeof StatisticsIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/add-printer': typeof AddPrinterIndexRoute
   '/history': typeof HistoryIndexRoute
   '/management': typeof ManagementIndexRoute
+  '/printer': typeof PrinterIndexRoute
   '/request': typeof RequestIndexRoute
   '/statistics': typeof StatisticsIndexRoute
 }
@@ -112,22 +144,40 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/add-printer/': typeof AddPrinterIndexRoute
   '/history/': typeof HistoryIndexRoute
   '/management/': typeof ManagementIndexRoute
+  '/printer/': typeof PrinterIndexRoute
   '/request/': typeof RequestIndexRoute
   '/statistics/': typeof StatisticsIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/history' | '/management' | '/request' | '/statistics'
+  fullPaths:
+    | '/'
+    | '/add-printer'
+    | '/history'
+    | '/management'
+    | '/printer'
+    | '/request'
+    | '/statistics'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/history' | '/management' | '/request' | '/statistics'
+  to:
+    | '/'
+    | '/add-printer'
+    | '/history'
+    | '/management'
+    | '/printer'
+    | '/request'
+    | '/statistics'
   id:
     | '__root__'
     | '/'
+    | '/add-printer/'
     | '/history/'
     | '/management/'
+    | '/printer/'
     | '/request/'
     | '/statistics/'
   fileRoutesById: FileRoutesById
@@ -135,16 +185,20 @@ export interface FileRouteTypes {
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AddPrinterIndexRoute: typeof AddPrinterIndexRoute
   HistoryIndexRoute: typeof HistoryIndexRoute
   ManagementIndexRoute: typeof ManagementIndexRoute
+  PrinterIndexRoute: typeof PrinterIndexRoute
   RequestIndexRoute: typeof RequestIndexRoute
   StatisticsIndexRoute: typeof StatisticsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AddPrinterIndexRoute: AddPrinterIndexRoute,
   HistoryIndexRoute: HistoryIndexRoute,
   ManagementIndexRoute: ManagementIndexRoute,
+  PrinterIndexRoute: PrinterIndexRoute,
   RequestIndexRoute: RequestIndexRoute,
   StatisticsIndexRoute: StatisticsIndexRoute,
 }
@@ -160,8 +214,10 @@ export const routeTree = rootRoute
       "filePath": "~__root.tsx",
       "children": [
         "/",
+        "/add-printer/",
         "/history/",
         "/management/",
+        "/printer/",
         "/request/",
         "/statistics/"
       ]
@@ -169,11 +225,17 @@ export const routeTree = rootRoute
     "/": {
       "filePath": "~index.tsx"
     },
+    "/add-printer/": {
+      "filePath": "~add-printer/~index.tsx"
+    },
     "/history/": {
       "filePath": "~history/~index.tsx"
     },
     "/management/": {
       "filePath": "~management/~index.tsx"
+    },
+    "/printer/": {
+      "filePath": "~printer/~index.tsx"
     },
     "/request/": {
       "filePath": "~request/~index.tsx"
