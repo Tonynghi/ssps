@@ -44,9 +44,6 @@ function RouteComponent() {
               onSubmit={formik.handleSubmit}
               className="flex relative flex-col w-[40rem] gap-4"
             >
-              <div>
-                Đăng nhập bằng tài khoản HCMUT của bạn để sử dụng dịch vụ
-              </div>
               <div className="relative flex w-full flex-col gap-4 items-start">
                 <label htmlFor="brand" className="relative font-bold mt-1">
                   Tài khoản:

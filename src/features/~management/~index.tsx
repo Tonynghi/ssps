@@ -112,7 +112,7 @@ function Management() {
               Danh sách máy in
             </div>
             <Link
-              to="/history"
+              to="/add-printer"
               className="relative mt-2 flex size-fit items-center justify-center rounded-lg bg-primary px-4 py-2 font-bold text-white duration-200 ease-in-out hover:bg-primary-700 self-end"
             >
               <Add className="mr-2 fill-[white]" /> Cài đặt thêm máy in

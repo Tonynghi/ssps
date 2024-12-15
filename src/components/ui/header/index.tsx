@@ -88,9 +88,9 @@ const Header = () => {
             close={() => setUserDropdown(false)}
             className="absolute w-40 flex flex-col h-fit bg-white top-10 right-0 shadow-lg p-2 gap-3 rounded-lg cursor-pointer hover:bg-red-300 duration-200 ease-in-out"
           >
-            <div className="relative gap-2 flex flex-row text-red">
+            <Link to="/login" className="relative gap-2 flex flex-row text-red">
               Đăng xuất
-            </div>
+            </Link>
           </Dropdown>
         </div>
       </div>
